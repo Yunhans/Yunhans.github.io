@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="mystyle.css">
+        <title>匯率轉換</title>
+    </head>
+    <body>
+        <h1>匯率計算</h1>
+        <div class="container">
+            <!-- 1文字說明 -->
+            <div class="info">
+                <p>說明：</p>
+                <br>
+                <p>這是一個匯率轉換器</p>
+                <p>請輸入要轉換的台幣金額</p>
+                <p>再按下轉換</p>
+            </div>
+            <!-- 1輸入台幣轉換 -->
+            <div class="calculater">
+                <p>要轉換的台幣金額:</p>
+                <input class="input" type="text">
+                <button onclick="load()">開始匯率轉換</button>
+                <div>
+                    <table>
+                        <tr>
+                            <td>美金:</td>
+                            <td id="us"></td>
+                        </tr>
+                        <tr>
+                            <td>歐元:</td>
+                            <td id="eu"></td>
+                        </tr>
+                        <tr>
+                            <td>日圓:</td>
+                            <td id="ja"></td>
+                        </tr>
+                        <tr>
+                            <td>韓元:</td>
+                            <td id="ko"></td>
+                        </tr>
+                        <tr>
+                            <td>澳幣:</td>
+                            <td id="au"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div>
+            <!-- 4reset按鈕 -->
+            <button class="refresh-btn" onclick="location.reload()">reset</button>
+        </div>
+        <script>
+            // 2 xml load
+            function load(){
+                const xhttp = new XMLHttpRequest();
+                xhttp.onload = function(){
+                    calculate(this);
+                }
+                xhttp.open("GET","./rate.xml");
+                xhttp.send();
+            }
+            function calculate(xml){
+                var xmlDoc = xml.responseXML;
+                var ntd = document.querySelector(".input").value;
+                var usRate = xmlDoc.getElementsByTagName("us")[0].textContent;
+                var euRate = xmlDoc.getElementsByTagName("eu")[0].textContent;
+                var jaRate = xmlDoc.getElementsByTagName("ja")[0].textContent;
+                var koRate = xmlDoc.getElementsByTagName("ko")[0].textContent;
+                var auRate = xmlDoc.getElementsByTagName("au")[0].textContent;
+                // var us = (ntd * 0.0323).toFixed(2);
+                var us = (ntd * usRate).toFixed(2);
+                var eu = (ntd * euRate).toFixed(2);
+                var ja = (ntd * jaRate).toFixed(2);
+                var ko = (ntd * koRate).toFixed(2);
+                var au = (ntd * auRate).toFixed(2);
+                // 5 檢查輸入
+                if(isNaN(ntd) || ntd<0){            
+                    alert('非有效數值');
+                    location.reload();
+                }else{
+                    document.getElementById("us").innerHTML = us;
+                    document.getElementById("eu").innerHTML = eu;
+                    document.getElementById("ja").innerHTML = ja;
+                    document.getElementById("ko").innerHTML = ko;
+                    document.getElementById("au").innerHTML = au;
+                }
+            }
+        </script>
+    </body>
+</html>
