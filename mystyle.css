@@ -10,6 +10,39 @@ body {
     justify-content: center;
     text-align: center;
 }
+nav {
+    position: -webkit-sticky;
+    position: sticky;
+    padding: 10px;
+}
+ul {
+    font-size: 24px;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #fff;
+}
+li {
+    float: left;
+}
+li.email {
+    float: right;
+}
+li a {
+    display: block;
+    color: #000;
+    text-align: center;
+    padding: 10px 14px;
+    text-decoration: none;
+}
+li a:hover:not(.active){
+    background-color: #444;
+    color: #fff;
+}
+li a.active {
+    background-color: orange;
+}
 h1 {
     text-align: center;
     padding: 60px 0px 10px;

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <link rel="icon" type="image/png" href="paper.jpg">
+        <title>猜猜拳</title>
+    </head>
+    <body>
+        <nav>
+            <ul>
+                <li><a href="index.html">猜猜拳</a></li>
+                <li><a href="federer.html">帥照</a></li>
+                <li><a href="demo.html">期末</a></li>
+                <li class="email"><a class="active" href="#about">Email</a></li>
+            </ul>
+        </nav>
+        <h1>猜猜拳</h1>
+        <div class="play">
+            <p>想出什麼拳？</p>
+        </div>
+        <br>
+        <div class="container">
+            <div class="card" onclick="play('paper')">
+                <div class="box">
+                    <img src="image/paper.jpg">
+                </div>
+                <hr>
+                <p class="text">布</p>
+            </div>
+            <div class="card" onclick="play('scissors')">
+                <div class="box">
+                    <img src="image/scissors.jpg">
+                </div>
+                <hr>
+                <p class="text">剪刀</p>
+            </div>
+            <div class="card">
+                <div class="box" onclick="play('stone')">
+                    <img src="image/stone.jpg">
+                </div>
+                <hr>
+                <p class="text">石頭</p>
+            </div>
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>
