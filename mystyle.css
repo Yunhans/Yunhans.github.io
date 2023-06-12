@@ -54,6 +54,7 @@ h1 {
 .container {
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     gap: 50px;
@@ -61,6 +62,8 @@ h1 {
 }
 .container .info {
     width: 45%;
+    min-width: 300px;
+    max-width: 500px;
     height: 400px;
     background: white;
     line-height: 3em;
@@ -73,6 +76,8 @@ h1 {
 }
 .container .calculater {
     width: 45%;
+    min-width: 300px;
+    max-width: 500px;
     height: 400px;
     background: white;
     line-height: 3em;
